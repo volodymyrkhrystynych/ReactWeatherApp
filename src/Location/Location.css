@@ -1,0 +1,15 @@
+.Location {
+    display: column;
+    padding: 20px;
+    flex-direction: row;
+}
+
+.row {
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+}
+
+label {
+    padding: 0 10px;
+}

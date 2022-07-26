@@ -1,56 +1,61 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class WeatherData extends Component {
-  componentDidMount() {
-      this.state = {
-          main:{temp:0}};
-    this.getWeatherData();
-    // const url = 'https://dark-sky.p.rapidapi.com/37.774929,-122.419418,2019-02-20';
-    // const options = {
-    //   method: 'GET',
-    //   headers: {
-    //     'X-RapidAPI-Key': 'd31192c265mshe7589f784720465p1ae09djsn31af67b7d826',
-    //     'X-RapidAPI-Host': 'dark-sky.p.rapidapi.com'
-    //   }
-    // };
-  }
+function WeatherData(props) {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [error, setError] = useState(undefined)
+  const [result, setResult] = useState({})
 
-  getWeatherData(){
-    const lat = 37.774929
-    const lon = -122.419418
-    const API_key = 'fc38166d48d39f532d2ad0e8dde12273'
+  useEffect(()=> {
+    getWeatherData(props.lat, props.lon, props.apiKey);
+  }, [props.lat, props.lon, props.apiKey])
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}`;
-
+  const getWeatherData = (lat, lon, apiKey) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     fetch(url)
-    .then(res => res.json())
+    .then(res => {
+      if (res.status >= 400){
+        throw new Error("server responds with error!");
+      }
+      return res.json();
+    })
     .then(
       (result) => {
-        console.log(result)
-        this.setState({
-          isLoaded: true,
-          items: result.items
-        });
+        setIsLoaded(true);
+        setResult(result);
       },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
       (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
+        setIsLoaded(true);
+        setError(error);
       }
     )
   }
 
-  render() {
+
+  if(!isLoaded){
     return(
-        <div>
-          {this.state != null &&
-                < p > { this.state.main.temp}</p>
-          }
-        </div>
+      <div className='loading'>
+        loading           loading           loading           loading           loading           loading 
+      </div>
     )
   }
+
+  if(error){
+    return(
+      <div className='error'>
+        Error
+      </div>
+    )
+  }
+
+  console.log(result)
+
+  return(
+    <>
+      <div>Longitude: {props.lon}</div>
+      <div>Latitude: {props.lat}</div>
+      <p> { result.main?.temp}</p>
+    </>  
+  )
 }
+
+export default WeatherData;
