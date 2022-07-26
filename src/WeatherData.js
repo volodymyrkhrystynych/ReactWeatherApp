@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 export default class WeatherData extends Component {
   componentDidMount() {
-    // console.log('hello')
+      this.state = {
+          main:{temp:0}};
     this.getWeatherData();
     // const url = 'https://dark-sky.p.rapidapi.com/37.774929,-122.419418,2019-02-20';
     // const options = {
@@ -26,10 +27,10 @@ export default class WeatherData extends Component {
     .then(
       (result) => {
         console.log(result)
-        // this.setState({
-        //   isLoaded: true,
-        //   items: result.items
-        // });
+        this.setState({
+          isLoaded: true,
+          items: result.items
+        });
       },
       // Note: it's important to handle errors here
       // instead of a catch() block so that we don't swallow
@@ -45,7 +46,11 @@ export default class WeatherData extends Component {
 
   render() {
     return(
-      <p>Click on an emoji to view the emoji short name.</p>
+        <div>
+          {this.state != null &&
+                < p > { this.state.main.temp}</p>
+          }
+        </div>
     )
   }
 }
