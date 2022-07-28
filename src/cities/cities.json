@@ -1,0 +1,13 @@
+{
+    "London":{
+        "Longitude":-0.118,
+        "Latitude":51.509
+    },
+    "New York":{
+        "Longitude":-73.935,
+        "Latitude":40.730}
+    "Tokyo":{
+        "Longitude":139.839,
+        "Latitude":35.652
+    }
+}
