@@ -53,7 +53,7 @@ function WeatherData(props) {
     <>
       <div>Longitude: {props.lon}</div>
       <div>Latitude: {props.lat}</div>
-      <p> { result.main?.temp}</p>
+      <p> { (result.main?.temp - 272.15).toFixed(2)}</p>
     </>  
   )
 }
