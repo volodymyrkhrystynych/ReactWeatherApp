@@ -7,6 +7,15 @@ import Cities from './cities/cities.js';
 import NYC from './cities/nyc.jpg';
 import Tok from './cities/tokyo.jpg';
 import london from './cities/london.jpg';
+import earth from './cities/mercator.jpg';
+
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
   const API_key = 'fc38166d48d39f532d2ad0e8dde12273'
@@ -17,7 +26,7 @@ function App() {
     const [lat, setLat] = useState(randLon);
 
     const [city, setCity] = useState("");
-    const [imgLink, setImglink] = useState("");
+    const [imgLink, setImglink] = useState(earth);
 
     function handleClick(acity, longitude, latitude, imglink){
         setCity(acity); 
@@ -35,10 +44,31 @@ function App() {
 
   return (
     <div className="App">
-      <Location lon={lon} lat={lat} setLon={setLon} setLat={setLat}/>
-      <WeatherData lon={lon} lat={lat} apiKey={API_key}/>
-      <Cities onClick={handleClick} />
-      {(imgLink != "") && <img src={imgLink} alt="CityImage" style={{height:"400px",width:"400px"}}/>}
+      <Box sx={{ flexGrow: 1 }} width="100%">
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Weather
+            </Typography>
+            <Location lon={lon} lat={lat} setLon={setLon} setLat={setLat}/>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      {/* <Location lon={lon} lat={lat} setLon={setLon} setLat={setLat}/> */}
+      <div>
+        <WeatherData lon={lon} lat={lat} apiKey={API_key}/>
+        <Cities onClick={handleClick} />
+        <img src={imgLink} alt="CityImage" style={{height:"100%",width:"100%"}}/>
+      </div>
     </div>
   );
 }

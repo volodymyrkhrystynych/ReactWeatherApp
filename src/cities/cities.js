@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import City from "./city.js";
 
+import './cities.css';
+
 function Cities({onClick}) {
     const data = [
         {
@@ -24,14 +26,14 @@ function Cities({onClick}) {
     ];
     
     const citiesList = data.map(city =>
-        <li key={city.Name}>
+        <div key={city.Name}>
           <City name={city.Name} lon={city.Longitude} lat={city.Latitude} imglink={city.Img} onClick={onClick}/>
-        </li>
+        </div>
     )
     return (
-        <ul>
+        <div class="flex-container">
             {citiesList}
-        </ul>
+        </div>
     )
 }
 
