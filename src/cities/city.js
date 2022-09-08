@@ -5,9 +5,9 @@ import './city.css';
 
 function City({name, lon, lat, imglink, onClick}) {
     return (
-        <>
-          <Button variant="contained" className="City" onClick={()=>{onClick(name, lon, lat, imglink)}}>{name}</Button>
-        </>
+        <div className="City">
+          <Button variant="contained" onClick={()=>{onClick(name, lon, lat, imglink)}}>{name}</Button>
+        </div>
     )
 }
 

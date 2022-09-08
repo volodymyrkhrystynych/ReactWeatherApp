@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Card from '@mui/material/Card';
 
 function WeatherData(props) {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -50,11 +51,9 @@ function WeatherData(props) {
   console.log(result)
 
   return(
-    <>
-      {/* <div>Longitude: {props.lon}</div>
-      <div>Latitude: {props.lat}</div> */}
-      <p> { (result.main?.temp - 272.15).toFixed(2)}</p>
-    </>  
+    <Card style={{opacity:0.7, paddingLeft:50, paddingRight:50}}>
+      <h1> { (result.main?.temp - 272.15).toFixed(1)}&#176;</h1>
+    </Card>  
   )
 }
 

@@ -63,11 +63,11 @@ function App() {
           </Toolbar>
         </AppBar>
       </Box>
-      {/* <Location lon={lon} lat={lat} setLon={setLon} setLat={setLat}/> */}
-      <div>
-        <WeatherData lon={lon} lat={lat} apiKey={API_key}/>
+      <div style={{backgroundImage:`url(${imgLink})`, height:"100%",width:"100%"}}>
         <Cities onClick={handleClick} />
-        <img src={imgLink} alt="CityImage" style={{height:"100%",width:"100%"}}/>
+        <div className="trying-to-center">
+          <WeatherData lon={lon} lat={lat} apiKey={API_key}/>
+        </div>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ function Cities({onClick}) {
         </div>
     )
     return (
-        <div class="flex-container">
+        <div className="flex-container">
             {citiesList}
         </div>
     )
