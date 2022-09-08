@@ -66,7 +66,7 @@ function App() {
       <div style={{backgroundImage:`url(${imgLink})`, height:"100%",width:"100%"}}>
         <Cities onClick={handleClick} />
         <div className="trying-to-center">
-          <WeatherData lon={lon} lat={lat} apiKey={API_key}/>
+          <WeatherData lon={lon} lat={lat} apiKey={API_key}/>\
         </div>
       </div>
     </div>
