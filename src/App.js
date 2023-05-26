@@ -13,12 +13,10 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
-  const API_key = 'fc38166d48d39f532d2ad0e8dde12273'
   const randLat = (Math.random()*180 - 90).toFixed(2);
   const randLon = (Math.random()*360 - 180).toFixed(2);
     
