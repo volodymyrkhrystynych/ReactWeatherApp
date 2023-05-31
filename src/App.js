@@ -19,7 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 function App() {
   const randLat = (Math.random()*180 - 90).toFixed(2);
   const randLon = (Math.random()*360 - 180).toFixed(2);
-    
+
+    const API_key = process.env.REACT_APP_API_KEY;
     const [lon, setLon] = useState(randLat);
     const [lat, setLat] = useState(randLon);
 
