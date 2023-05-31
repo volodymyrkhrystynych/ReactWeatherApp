@@ -24,18 +24,18 @@ function App() {
     const [lon, setLon] = useState(randLat);
     const [lat, setLat] = useState(randLon);
 
-    const [city, setCity] = useState("");
+    const [, setCity] = useState("");
     const [imgLink, setImglink] = useState(earth);
 
     function handleClick(acity, longitude, latitude, imglink){
         setCity(acity); 
         setLon(longitude);
         setLat(latitude);
-        if (acity == "New York"){
+        if (acity === "New York"){
           setImglink(NYC);
-        } else if (acity == "Tokyo"){
+        } else if (acity === "Tokyo"){
           setImglink(Tok);
-        } else if (acity == "London"){
+        } else if (acity === "London"){
           setImglink(london);
         }
     }
